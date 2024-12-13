@@ -2,7 +2,7 @@
 
 ## Step 1: Create a Database on MySQL
 
-Make sure MySQL Workbench is installed. Update the `user` and `password` fields according to your MySQL Workbench configuration.
+Make sure MySQL Workbench is installed. Update the `user` and `password` fields in `mysql_database.py` according to your MySQL Workbench configuration.
 
 ```python
 host="localhost",
