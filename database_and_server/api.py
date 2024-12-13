@@ -3,7 +3,8 @@
 
 # # curl -X INSERT -H "Content-Type: application/json" -d "{\"value\": 25.5}" http://localhost:5000/add_data
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify  # pip install flask
+
 import mysql.connector
 
 app = Flask(__name__)
