@@ -22,11 +22,11 @@ def create_database():
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS Numbers (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            number1 FLOAT,
-            number2 FLOAT,
-            number3 FLOAT,
-            number4 FLOAT,
-            number5 FLOAT
+            number1 DOUBLE,
+            number2 DOUBLE,
+            number3 DOUBLE,
+            number4 DOUBLE,
+            number5 INT
         )
         """)
 

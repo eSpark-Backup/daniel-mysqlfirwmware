@@ -37,14 +37,15 @@ void loop() {
       String input = Serial.readStringUntil('\n');
       input.trim();
 
-      int values[5];
+      double values[4];
+      int intValue;
 
-      int count = sscanf(input.c_str(), "%d %d %d %d %d", &values[0], &values[1], &values[2], &values[3], &values[4]);
+      int count = sscanf(input.c_str(), "%lf %lf %lf %lf %d", &values[0], &values[1], &values[2], &values[3], &intValue);
       
       Serial.println("5 Interger has been enter:\n");
 
       if (count == 5) {
-        sendData(values);
+        sendData(values, intValue);
         Serial.println("Data sent to server. Enter next command:");
         Serial.println("Enter command (0 to input data, 1 to get last data by ID):");
         count = 0;
@@ -54,14 +55,14 @@ void loop() {
     } else if (command == "1") {
       while (!Serial.available());
       getData();
-      Serial.println("Enter next command:");
+      Serial.println("Enter next command: (0 to input data, 1 to get last data by ID)");
     } else {
       Serial.println("Invalid command. Enter 0 to input data or 1 to get last data by ID:");
     }
   }
 }
 
-void sendData(int values[5]) {
+void sendData(double values[4], int intValue) {
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
 
@@ -75,7 +76,7 @@ void sendData(int values[5]) {
     doc["number2"] = values[1];
     doc["number3"] = values[2];
     doc["number4"] = values[3];
-    doc["number5"] = values[4];
+    doc["number5"] = intValue;
 
     String jsonPayload;
     serializeJson(doc, jsonPayload);
@@ -114,22 +115,6 @@ void getData() {
       StaticJsonDocument<200> doc;
       DeserializationError error = deserializeJson(doc, response);
 
-      if (!error) {
-        Serial.print("ID: ");
-        Serial.print(doc["id"].as<int>());
-        Serial.print(", Number1: ");
-        Serial.print(doc["number1"].as<int>());
-        Serial.print(", Number2: ");
-        Serial.print(doc["number2"].as<int>());
-        Serial.print(", Number3: ");
-        Serial.print(doc["number3"].as<int>());
-        Serial.print(", Number4: ");
-        Serial.print(doc["number4"].as<int>());
-        Serial.print(", Number5: ");
-        Serial.println(doc["number5"].as<int>());
-      } else {
-        Serial.println("Error parsing JSON");
-      }
     } else {
       Serial.println("Error getting data: " + String(httpResponseCode));
     }

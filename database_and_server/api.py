@@ -55,28 +55,21 @@ def get_last_data():
     try:
         connection = get_db_connection()
         cursor = connection.cursor(dictionary=True)
-
-        # Fetch the last ID from the table (the latest inserted ID)
-        query = "SELECT id FROM numbers ORDER BY id DESC LIMIT 1"
+        # Fetch the last entered integer value from number5 column
+        query = "SELECT number5 FROM Numbers ORDER BY id DESC LIMIT 1"
         cursor.execute(query)
         row = cursor.fetchone()
 
         if row:
-            # Now that we have the last ID, we fetch the data associated with that ID
-            last_id = row['id']
-            query = "SELECT * FROM numbers WHERE id = %s"
-            cursor.execute(query, (last_id,))
-            data = cursor.fetchone()
-
-            if data:
-                return jsonify(data), 200
-            else:
-                return jsonify({"message": "No data found for the last ID"}), 404
+            last_integer = row['number5']
+            return jsonify({"last_integer": last_integer}), 200
         else:
             return jsonify({"message": "No data found"}), 404
 
     except mysql.connector.Error as err:
-        return jsonify({"error": str(err)}), 500
+        return jsonify({"error": f"MySQL Error: {str(err)}"}), 500
+    except Exception as e:
+        return jsonify({"error": f"Server Error: {str(e)}"}), 500
     finally:
         if connection.is_connected():
             cursor.close()
