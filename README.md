@@ -70,4 +70,4 @@ Ensure that both the server and ESP32 are on the same network.
 
 ## Demo Video
 
-[Watch the Demo Video](https://www.loom.com/share/528119e048e3420cb9b495e7fc252071?sid=429f4312-00d7-4192-bc60-79b06f0897c9)
+[Watch the Demo Video] (https://www.loom.com/share/41fb0520eaf24f73900536a465b07a0f?sid=ff07c38c-4034-4e3b-81e7-210350594474)
