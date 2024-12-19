@@ -5,7 +5,7 @@
 ## 1. Setup ESP32 on Arduino IDE
 
 ### Step 1: Install the ESP32 Board Manager URL
-1. Open Arduino IDE.
+1. Open Arduino IDE(2.3.4).
 2. Go to **File → Preferences** (on Windows/Linux).
 3. In the **Additional Board Manager URLs** field, paste the following URL:
    ```bash
@@ -30,7 +30,7 @@
 ---
 
 ## 2. Install Required Libraries
-1. Open Arduino IDE.
+1. Open Arduino IDE(2.3.4).
 2. Go to **Tools → Manage Libraries**.
 3. Search and install the following libraries:
 - `ArduinoJSON (v7.2.1)`
