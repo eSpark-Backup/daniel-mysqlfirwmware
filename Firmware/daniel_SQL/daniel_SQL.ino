@@ -4,11 +4,11 @@
 #include <ArduinoJson.h>
 
 // Wi-Fi credentials
-const char* ssid = "StormFiber-E290";           // Replace with your WiFi SSID
-const char* password = "D23Uh34e";
+const char* ssid = "StormFiber-2.4G";           // Replace with your WiFi SSID
+const char* password = "47779884";
 
 // Flask server URL
-const char* serverURL = "http://192.168.18.32:5000";
+const char* serverURL = "http://192.168.2.197:5000";
 int count =0;
 void setup() {
   Serial.begin(115200);

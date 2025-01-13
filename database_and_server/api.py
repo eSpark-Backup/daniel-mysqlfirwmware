@@ -54,6 +54,7 @@ def add_data():
 @app.route('/get_last_data', methods=['GET'])
 def get_last_data():
     try:
+        connection = None
         connection = get_db_connection()
         cursor = connection.cursor(dictionary=True)
         # Fetch the last entered integer value from number5 column
