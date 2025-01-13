@@ -28,6 +28,7 @@ def get_db_connection():
 def add_data():
     data = request.json
     required_fields = ["number1", "number2", "number3", "number4", "number5"]
+    connection = None
 
     if not data or not all(field in data for field in required_fields):
         return jsonify({"error": "Invalid input, all numbers are required"}), 400
